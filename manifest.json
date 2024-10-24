@@ -1,0 +1,25 @@
+{
+  "required_api_version": "^2.0.0",
+  "name": "Utasks",
+  "description": "Add tasks to caldav",
+  "developer_name": "Novabeam",
+  "icon": "images/icon.png",
+  "options": {
+    "query_debounce": 0.05
+  },
+  "preferences": [
+    {
+      "id": "demo_kw",
+      "type": "keyword",
+      "name": "Utasks",
+      "default_value": "task"
+    },
+    {
+      "id": "Calendar_URL",
+      "type": "text",
+      "name": "caldav URL",
+      "description": "Enter http url here",
+      "default_value": ""
+    }
+  ]
+}
