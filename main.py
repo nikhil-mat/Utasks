@@ -10,7 +10,9 @@ from ulauncher.api.shared.action.ExtensionCustomAction import ExtensionCustomAct
 from ulauncher.api.shared.action.HideWindowAction import HideWindowAction
 # My imports 
 import subprocess
-
+def create_notification(message): 
+    subprocess.Popen(['notify-send', message]) 
+    return None 
 
 
 
@@ -52,6 +54,7 @@ class ItemEnterEventListener(EventListener):
     def on_event(self, event, extension):
         data = event.get_data()
         self.FUcktion(data)
+        create_notification("Task Created : " + data)
         return HideWindowAction()
         # return RenderResultListAction([ExtensionResultItem(icon='images/icon.png',
         #                                                    name="Request sent",
