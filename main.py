@@ -8,6 +8,7 @@ from ulauncher.api.shared.item.ExtensionResultItem import ExtensionResultItem
 from ulauncher.api.shared.action.RenderResultListAction import RenderResultListAction
 from ulauncher.api.shared.action.ExtensionCustomAction import ExtensionCustomAction
 from ulauncher.api.shared.action.HideWindowAction import HideWindowAction
+from caldav_handle import TaskCreator_Caldav
 # My imports 
 import subprocess
 def create_notification(message): 
@@ -46,15 +47,13 @@ class KeywordQueryEventListener(EventListener):
             ))
         return RenderResultListAction(items)
 
-buffer = "\n\n\n\n"
 class ItemEnterEventListener(EventListener):
-    def FUcktion(self,taskstring):
-        print(buffer+"Function: "+taskstring+buffer)
 
     def on_event(self, event, extension):
-        data = event.get_data()
-        self.FUcktion(data)
-        create_notification("Task Created : " + data)
+        query = event.get_data()
+        URL = extension.preferences['Calendar_URL']
+        TaskCreator_Caldav(URL,query)
+        create_notification("Task Created : " + query)
         return HideWindowAction()
         # return RenderResultListAction([ExtensionResultItem(icon='images/icon.png',
         #                                                    name="Request sent",
